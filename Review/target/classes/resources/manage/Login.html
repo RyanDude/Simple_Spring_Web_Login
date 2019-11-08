@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link type="text/css" rel="stylesheet" href="../static/login.css"/>
+    <script src="../scripts/jquery.js" type="text/javascript" charset="UTF-8"></script>
+    <script src="../scripts/login.js" type="text/javascript" charset="UTF-8"></script>
+    <script src="../scripts/jquery.cookie.js" type="text/javascript" charset="UTF-8"></script>
+
+</head>
+<body class="content">
+<script type="text/javascript">
+    function login() {
+        var formObject = {}
+        var formArray=$("#form").serializeArray();
+        $.each(formArray, function (index, item) {
+            formObject[item.name]=item.value;
+        });
+        $.ajax({
+            headers:{'token': $.cookie('token')},
+            url:"/user/login",
+            type:"post",
+            contentType:"application/json; charset=utf-8",
+            data: JSON.stringify(formObject),
+            dataType: "json",
+            success:function (data) {
+                if(data.data!=null){
+                    alert("login success");
+                    window.location.href="index.html";
+                }
+                if(data.msg=="fail"){
+                    alert("Fail");
+                }
+            },
+            error:function (e) {
+                alert("error")
+            }
+        })
+    }
+</script>
+<div class="fromRow">
+    <div class="head">
+        Welcome Page
+    </div>
+    <form id="form" method="post">
+        <input type="text" name="username" placeholder="Please input your account"/><br/>
+        <input type="password" name="password" placeholder="Please input your password"/><i class="switch"></i><br/>
+        <label><input type="radio" name="accesstype" value="1" checked="checked"/>common user</label><br/>
+        <label><input type="radio" name="accesstype" value="2"/>Manager</label><br/>
+        <label><input type="checkbox" id="remember" value=""/>remember account</label><br/>
+        <input type="button" onclick="login()" value="Submit">
+    </form>
+    <div class="push"></div>
+</div>
+<footer class="footer">All CopyRight reserve to Justin</footer>
+</body>
+</html>

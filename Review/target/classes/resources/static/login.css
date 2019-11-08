@@ -1,0 +1,43 @@
+.content{
+    background: url("src/bgimg.jpg");
+    width:200px;
+    height:100%;;
+    position:absolute;
+    left:50%;
+    top:50%;
+    margin: 0;
+}
+
+.fromRow input[type='submit'],
+.fromRow input[type='button'],
+.fromRow input[type='text'],
+.fromRow input[type='password']{
+    width:260px;
+}
+
+.head{
+    background: url("src/eye.jpg");
+    margin-top: -100px;
+    position: absolute;
+    text-align: center;
+    font-family: Algerian;
+    font-size: larger;
+}
+
+.fromRow{
+    min-height: 100%;
+    margin-top: -200px;
+    margin-bottom: -50px;
+    margin-left: -100px;
+}
+.footer,
+.push{
+    height: 50px;
+    text-align: center;
+    width: 300px;
+    position: absolute;
+    margin-left: -150px;
+}
+
+
+
